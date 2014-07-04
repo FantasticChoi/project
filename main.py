@@ -48,10 +48,11 @@ while not done:
 	char_y -= y_vel
 	
 	ground = pygame.Rect(0 + groundx, 640, 1280, 60)
-	groundcollide = pygame.Rect(624, (char_y + 150), 104, 2)
+	groundcollide = pygame.Rect(624, (char_y + 150 - y_vel), 104, 1)
 	
 	if groundcollide.colliderect(ground):
 		y_vel = 0.0
+		char_y = ground.y - 150
 	else:
 		y_vel -= 1.0
 	
