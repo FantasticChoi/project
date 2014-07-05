@@ -17,7 +17,7 @@ colours = {"white":(255, 255, 255), "green":(0, 255, 0), "blue":(0, 0, 255), "re
 
 groundx = 0
 
-char = pygame.image.load("char.png").convert_alpha()
+char = pygame.image.load("CharDesign1.png").convert_alpha()
 charl = pygame.transform.flip(char, True, False)
 
 chardirec = "right"
