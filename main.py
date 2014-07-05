@@ -36,30 +36,39 @@ while not done:
 	keys = pygame.key.get_pressed()
 	
 	if keys[pygame.K_a] == True:
-		groundx += 4
+		groundxvel = 6
 		chardirec = "left"
 	elif keys[pygame.K_d] == True:
-		groundx -= 4
+		groundxvel = -6
 		chardirec = "right"
+	else:
+		groundxvel = 0
 	
-	if keys[pygame.K_SPACE] == True:
-		y_vel = 10.0
+	groundx += groundxvel
+	
+	if keys[pygame.K_SPACE] == True and (groundcollide.colliderect(ground) or groundcollide.colliderect(ground2)):
+		y_vel = 17.0
 	
 	char_y -= y_vel
 	
 	ground = pygame.Rect(0 + groundx, 640, 1280, 60)
-	groundcollide = pygame.Rect(624, (char_y + 150 - y_vel), 104, 1)
+	ground2 = pygame.Rect(1280 + groundx, 560, 1280, 60)
+	groundcollide = pygame.Rect(639, (char_y + 150 - y_vel), 74, 1)
 	
 	if groundcollide.colliderect(ground):
 		y_vel = 0.0
 		char_y = ground.y - 150
-	else:
-		y_vel -= 1.0
+	elif groundcollide.colliderect(ground2):
+		y_vel = 0.0
+		char_y = ground2.y - 150
+	elif y_vel > -20:
+		y_vel -= 1
 	
 	screen.fill(colours["cyan"])
 	
 	pygame.draw.rect(screen, colours["green"], ground, 0)
-	pygame.draw.rect(screen, colours["red"], groundcollide, 0)
+	pygame.draw.rect(screen, colours["green"], ground2, 0)
+	#pygame.draw.rect(screen, colours["red"], groundcollide, 0)
 	
 	if chardirec == "right":
 		screen.blit(char, (620, char_y))
@@ -70,6 +79,4 @@ while not done:
 	
 	clock.tick(60)
 
-print(ground)
-print
 pygame.quit()
