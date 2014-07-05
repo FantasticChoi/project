@@ -53,14 +53,14 @@ while not done:
 	
 	ground = pygame.Rect(0 + groundx, 640, 1280, 60)
 	ground2 = pygame.Rect(1280 + groundx, 560, 1280, 60)
-	groundcollide = pygame.Rect(639, (char_y + 150 - y_vel), 74, 1)
+	groundcollide = pygame.Rect(639, (char_y + 77 - y_vel), 74, 1)
 	
 	if groundcollide.colliderect(ground):
 		y_vel = 0.0
-		char_y = ground.y - 150
+		char_y = ground.y - 77
 	elif groundcollide.colliderect(ground2):
 		y_vel = 0.0
-		char_y = ground2.y - 150
+		char_y = ground2.y - 77
 	elif y_vel > -20:
 		y_vel -= 1
 	
