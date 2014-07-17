@@ -15,7 +15,7 @@ chardirec = "right"
 y_vel = 0.0
 char_y = 490
 
-char = pygame.image.load("CharDesign1.png").convert_alpha()
+char = pygame.image.load("Char.png").convert_alpha()
 charl = pygame.transform.flip(char, True, False)
 
 spiderx = 1000
